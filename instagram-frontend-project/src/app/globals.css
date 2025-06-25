@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+.likeIcon {
+  font-size: 30px;
+  padding-right: 5px;
+  cursor: pointer;
+}
+
+.scrollhide::-webkit-scrollbar{
+   
+    display: none;
+  
+}
+
+.heart-animation {
+  position: absolute;
+  left: 45%;
+  top: 68%;
+  transform: translate(-50%, -50%);
+  animation: fadeInOut 1s forwards;
+}
+
+@keyframes fadeInOut {
+  0% {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.5);
+  }
+  50% {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.5);
+  }
+}
+
+
+
+#container {
+  scroll-padding: 2em;
+}
+
+.scroll-Behavior{
+  scroll-padding-top: 2em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
