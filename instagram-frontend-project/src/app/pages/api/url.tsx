@@ -1,6 +1,6 @@
 
 // const base_url = "http://localhost:8080/";
-const base_url = "https://instagram-backend-nu.vercel.app/";  
+const base_url = "https://instagram-backend-api.vercel.app/";  
 export const api = {
   userLogin: `${base_url}auth/login`,
   loginByUsername: `${base_url}auth/loginbyUsername`,
