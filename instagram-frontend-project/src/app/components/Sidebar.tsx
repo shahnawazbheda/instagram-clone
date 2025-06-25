@@ -55,24 +55,6 @@ export default function Sidebar({ token, isNotification1 }: { token: string, isN
     const [search, setSearch] = useState('');
     const [results, setResults] = useState<User[]>([]);
 
-
-    // useEffect(() => {
-    //     const token = localStorage.getItem('token'); 
-    //     if (token) {
-    //       axios.get('/api/notifications', {
-    //         headers: { Authorization: `Bearer ${token}` },
-    //       })
-    //       .then((response) => {
-    //         setNotifications(response.data.data);
-    //         setLoading(false);
-    //       })
-    //       .catch((error) => {
-    //         console.error('Error fetching notifications:', error);
-    //         setLoading(false);
-    //       });
-    //     }
-    //   }, []);
-
     useEffect(() => {
         const fetchUserData = async () => {
             try {
