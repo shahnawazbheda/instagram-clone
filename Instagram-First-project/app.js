@@ -8,7 +8,7 @@ require('dotenv').config();
 
 const app = express();
 app.use(cors({
-    origin:process.env.FRONTEND_URL,
+    origin:"https://instagram-clone-theta-ebon.vercel.app",
     credentials:true,
 }));
 const PORT = dbconfig.portNo;
