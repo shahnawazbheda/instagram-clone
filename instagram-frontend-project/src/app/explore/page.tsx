@@ -1,9 +1,14 @@
 import React from 'react'
-import  Explore  from '../components/Explore'
+import dynamic from 'next/dynamic'
 
-const page:React.FC =()=> {
+const Explore = dynamic(() => import('../components/Explore'), {
+    ssr: false,
+})
+
+const page: React.FC = () => {
   return (
     <Explore />
   )
 }
+
 export default page;

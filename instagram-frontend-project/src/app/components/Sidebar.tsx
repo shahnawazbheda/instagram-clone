@@ -40,7 +40,17 @@ interface Notification {
 }
 
 
-export default function Sidebar({ token, isNotification1 }: { token: string, isNotification1: boolean }) {
+export default function Sidebar({ token: initialToken, isNotification1 }: { token: string, isNotification1: boolean }) {
+    const [token, setToken] = useState(initialToken);
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            const storedToken = localStorage.getItem('token');
+            if (storedToken) {
+                setToken(storedToken);
+            }
+        }
+    }, []);
 
     const [open, setOpen] = useState(true);
     const [isSubSidebar, setIsSubSidebar] = useState<boolean>(false);

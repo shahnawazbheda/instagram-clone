@@ -31,6 +31,14 @@ const Reels: React.FC = () => {
   const [moreOption, setMoreOption] = useState<boolean>(false);
   const router = useRouter();
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+  const [token, setToken] = useState('');
+
+  useEffect(() => {
+    const storedToken = localStorage.getItem('token');
+    if (storedToken) {
+      setToken(storedToken);
+    }
+  }, []);
 
 
   // useEffect(() => {
@@ -81,15 +89,15 @@ const Reels: React.FC = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const token = localStorage.getItem('token');
+        const token = localStorage?.getItem('token');
         if (token) {
           const response = await getAllPosts();
           const responseData = response.data;
 
           if (responseData && responseData.data) {
-            const userPosts = responseData.data.map((post) => ({
+            const userPosts = responseData.data.map((post:any) => ({
               id: post._id,
-              files: post.files.map((file) => ({
+              files: post.files.map((file:any) => ({
                 fileName: file.fileName,
                 filePath: file.filePath,
                 postId: file.postId,
@@ -102,8 +110,8 @@ const Reels: React.FC = () => {
               isLiked: post.isLiked || false,
             })).reverse();
 
-            const videoPosts = userPosts.filter((post) =>
-              post.files.some((file) => isVideoFile(file.filePath))
+            const videoPosts = userPosts.filter((post:any) =>
+              post.files.some((file:any) => isVideoFile(file.filePath))
             );
 
             setPosts(videoPosts);
@@ -150,7 +158,7 @@ const Reels: React.FC = () => {
 
   return (
     <>
-      <Sidebar />
+      <Sidebar token={token} isNotification1={false} />
       <div className="md:p-4 sm:ml-80 overflow-y-auto h-[94vh] snap-y snap-mandatory scrollhide">
 
         {loading ? (
@@ -164,7 +172,9 @@ const Reels: React.FC = () => {
                     className="h-screen w-full rounded-lg"
                     loop
                     autoPlay
-                    ref={(el) => (videoRefs.current[index] = el)}
+                    ref={(el) => {
+                      videoRefs.current[index] = el
+                    }}
                   >
                     <source src={post.files[0].filePath} type="video/mp4" />
                   </video>
@@ -200,8 +210,7 @@ const Reels: React.FC = () => {
                 </div>
               </div>
             </React.Fragment>
-          ))
-        ) : (
+          ))        ) : (
           <div className='h-full  justify-self-center items-center flex justify-center'>
             <img src='./assets/file.png' className='h-36 w-36 ' />
           </div>

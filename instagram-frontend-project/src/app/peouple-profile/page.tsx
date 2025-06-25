@@ -1,12 +1,16 @@
 import React from 'react'
+import { Suspense } from 'react'
 import PeopleProfile from '../components/PeopleProfile';
 
-const page: React.FC = () => {
+const Page: React.FC = () => {
+    const userId = '';
+    const usersData: any = '';
+
     return (
-        <>
-            <PeopleProfile />
-        </>
+        <Suspense fallback={<div>Loading...</div>}>
+            <PeopleProfile userId={userId} usersData={usersData} />
+        </Suspense>
     )
 }
 
-export default page;
+export default Page;

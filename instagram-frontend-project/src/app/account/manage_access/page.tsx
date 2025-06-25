@@ -142,13 +142,19 @@
 // }
 
 
-import ManageAccess from '@/app/components/ManageAccess'
 import React from 'react'
+import dynamic from 'next/dynamic'
 
-export default function page() {
+const ManageAccess = dynamic(() => import('@/app/components/ManageAccess'), {
+    ssr: false,
+})
+
+const Page: React.FC = () => {
   return (
     <>
-    <ManageAccess />
+      <ManageAccess />
     </>
   )
 }
+
+export default Page;

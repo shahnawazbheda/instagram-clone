@@ -28,7 +28,7 @@ const ChangesPassword: React.FC = () => {
 
     return (
         <>
-            <Sidebar />
+            <Sidebar token={localStorage.getItem('token') || ''} isNotification1={false} />
             <div className="md:p-4 sm:ml-80">
                 <p className='text-2xl ms-5 mt-5 font-medium'>Change Password</p>
                 <form className="md:p-32 p-12 mx-auto" onSubmit={handleSubmit}>

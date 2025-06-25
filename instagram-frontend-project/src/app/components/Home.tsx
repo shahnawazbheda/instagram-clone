@@ -18,11 +18,10 @@ interface User {
     _id: string;
 }
 
-const Home: React.FC = ({ token }: { token: string }) => {
+const Home: React.FC<{ token: string }> = ({ token }) => {
     const [loading, setLoading] = useState<boolean>(true);
     const [search, setSearch] = useState('');
     const [results, setResults] = useState<User[]>([]);
-
     useEffect(() => {
         if (search.length > 0) {
             const fetchResults = async () => {
@@ -48,7 +47,7 @@ const Home: React.FC = ({ token }: { token: string }) => {
     return (
         <>
             <div className='md:mb-0 mb-16'>
-                <Sidebar />
+                <Sidebar token={localStorage.getItem('token') || ''} isNotification1={false} />
                 {loading ? (
                     <SkeletonLoader type="home" />
                 ) : (

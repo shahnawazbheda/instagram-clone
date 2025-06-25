@@ -1,10 +1,16 @@
 import React from 'react'
-import ChangesPassword from '../components/ChangesPassword'
+import dynamic from 'next/dynamic'
 
-export default function page() {
+const ChangesPassword = dynamic(() => import('../components/ChangesPassword'), {
+    ssr: false,
+})
+
+const Page: React.FC = () => {
   return (
     <>
-    <ChangesPassword />
+      <ChangesPassword />
     </>
   )
 }
+
+export default Page;

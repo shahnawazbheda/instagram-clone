@@ -76,9 +76,9 @@ const Suggested: React.FC = () => {
     useEffect(() => {
         const fetchUserData = async () => {
             try {
-                const token = localStorage.getItem('token');
+                const token:any = localStorage.getItem('token');
                 if (token) {
-                    const response = await getUserData(token);
+                    const response:any = await getUserData();
                     const responseData = response.data;
 
                     if (responseData && responseData.data && responseData.data.userName && responseData.data.name) {

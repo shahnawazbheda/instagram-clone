@@ -5,11 +5,19 @@ import { usePDF } from 'react-to-pdf';
 import Sidebar from './Sidebar';
 
 const QrCode: React.FC = () => {
+    const [token, setToken] = React.useState('');
+
+    React.useEffect(() => {
+        const storedToken = localStorage.getItem('token');
+        if (storedToken) {
+            setToken(storedToken);
+        }
+    }, []);
     const { toPDF, targetRef } = usePDF({ filename: 'page.  ' });
 
     return (
         <>
-            <Sidebar />
+           <Sidebar token={token} isNotification1={false} />
             <div className='md:hidden block bg-white p-4 fixed top-0 w-full'>
                 <p className='text-xl text-center font-bold'>QR code</p>
             </div>

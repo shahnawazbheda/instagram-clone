@@ -90,7 +90,7 @@ const EditProfile: React.FC = () => {
                     {success}
                 </div>
             )}
-            <Sidebar />
+            <Sidebar token={localStorage.getItem('token') || ''} isNotification1={false} />
             <div className="md:p-4 sm:ml-80">
                 <p className='text-2xl ms-5 mt-5 font-bold'>Edit Profile</p>
                 <form className="md:mt-10 md:p-0 p-12 mx-auto" onSubmit={handleSubmit}>

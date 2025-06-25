@@ -44,7 +44,7 @@ interface UserPostData {
   commentCount: number;
 }
 
-const PeopleProfile: React.FC<ProfileProps> = ({ userId }: { userId: any }) => {
+  const PeopleProfile: React.FC<ProfileProps> = ({ userId }: { userId: any }) => {
   const searchButton = useSearchParams();
   const [activeSection, setActiveSection] = useState<any>('POSTS');
   const [posts, setPosts] = useState<UserPostData[]>([]);
@@ -174,7 +174,7 @@ const PeopleProfile: React.FC<ProfileProps> = ({ userId }: { userId: any }) => {
         const decoded = jwtDecode(token);
        
         if (token) {
-          if (userId === decoded.id) {
+          if (userId === (decoded as any).id) {
             router.push('/profile');
           }
 
@@ -240,7 +240,7 @@ const PeopleProfile: React.FC<ProfileProps> = ({ userId }: { userId: any }) => {
   ];
   return (
     <>
-      <Sidebar />
+      <Sidebar token={localStorage.getItem('token') || ''} isNotification1={false} />
       <div className="md:p-4 sm:ml-80 ">
         <div className="p-4  rounded-lg">
           <div className='md:ms-32 md:me-32 '>
@@ -682,7 +682,7 @@ const PeopleProfile: React.FC<ProfileProps> = ({ userId }: { userId: any }) => {
                                 <video
                                   loop
                                   autoPlay
-                                  className="h-full w-full rounded-lg" autoPlay src="./assets/1406-147169807_tiny.mp4" />
+                                  className="h-full w-full rounded-lg" src="./assets/1406-147169807_tiny.mp4" />
 
                                 <div className="opacity-0  backdrop-brightness-75 hover:opacity-100 duration-300 absolute inset-0 z-4 flex justify-center items-center text-white font-semibold">
                                   <div className="flex">

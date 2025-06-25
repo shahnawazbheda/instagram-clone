@@ -2,7 +2,7 @@
 
 // export default function ManageAccess() {
 //   return (
-//     <div>ManageAccess</div>
+//     <div>ManaageAccess</div>
 //   )
 // }
 
@@ -12,7 +12,7 @@ import Settings from '@/app/components/Settings'
 import Sidebar from '@/app/components/Sidebar'
 import React, { useState } from 'react'
 
-const ManageAccess:React.FC =()=> {
+export default function ManageAccess() {
     const [activeSection, setActiveSection] = useState<any>('Active');
 
     const handleSectionClick = (section: any) => {
@@ -20,7 +20,7 @@ const ManageAccess:React.FC =()=> {
     };
     return (
         <>
-            <Sidebar />
+            <Sidebar token={localStorage.getItem('token') || ''} isNotification1={false} />
             <Settings />
 
             
@@ -47,7 +47,7 @@ const ManageAccess:React.FC =()=> {
                 {activeSection === 'Active' && (
                     <>
                         <div className='mt-10 '>
-                            <p className='md:text-lg  font-sans'>These are apps and websites that you&apos;ve connected to your Instagram or Threads account. They can access non-public information that you choose to share with them.</p>
+                            <p className='md:text-lg  font-sans'>These are apps and websites that you've connected to your Instagram or Threads account. They can access non-public information that you choose to share with them.</p>
 
                             <p className='mt-10  text-gray-500'>You have not authorised any applications to access your Instagram account.</p>
                         </div>
@@ -79,7 +79,7 @@ const ManageAccess:React.FC =()=> {
                     <>
                         <div className='mt-10'>
                             <p className='md:text-lg font-sans'>
-                                These are apps and websites that you&apos;ve connected to your Instagram or Threads account that you may not have used in the last 90 days. They&apos;re no longer able to access your non-public information, but may still have the information that you shared while they were active. &apos;Non-public&apos; means information that an app can only access if you choose to share it when you log in with your Instagram or Threads account (such as your email address).
+                                These are apps and websites that you've connected to your Instagram or Threads account that you may not have used in the last 90 days. They're no longer able to access your non-public information, but may still have the information that you shared while they were active. 'Non-public' means information that an app can only access if you choose to share it when you log in with your Instagram or Threads account (such as your email address).
                             </p>
 
                             <p className='mt-10 text-gray-500'>
@@ -114,7 +114,7 @@ const ManageAccess:React.FC =()=> {
                     <>
                         <div className='mt-10'>
                             <p className='md:text-lg font-sans'>
-                                These are apps and websites that are no longer connected to your Instagram or Threads account. They can&apos;t access your non-public information anymore, but may still have the information that you shared while they were active. &apos;Non-public&apos; means information that an app can only access if you choose to share it when you log in with your Instagram or Threads account (such as your email address). You can ask an app to delete your information. To do it, review their Privacy Policy for details and contact information. If you contact an app, they may need your user ID.
+                                These are apps and websites that are no longer connected to your Instagram or Threads account. They can't access your non-public information anymore, but may still have the information that you shared while they were active. 'Non-public' means information that an app can only access if you choose to share it when you log in with your Instagram or Threads account (such as your email address). You can ask an app to delete your information. To do it, review their Privacy Policy for details and contact information. If you contact an app, they may need your user ID.
                             </p>
 
                             <p className='mt-10 text-gray-500'>
@@ -149,5 +149,3 @@ const ManageAccess:React.FC =()=> {
         </>
     )
 }
-
-export default ManageAccess;

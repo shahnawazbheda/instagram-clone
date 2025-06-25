@@ -1,10 +1,19 @@
 
-import React from 'react'
+'use client';
+import React, { useState, useEffect } from 'react'
 import Sidebar from '../components/Sidebar';
 import { IoCaretBackOutline } from "react-icons/io5";
 
 
 const page: React.FC = () => {
+    const [token, setToken] = useState('');
+
+    useEffect(() => {
+        const storedToken = localStorage.getItem('token');
+        if (storedToken) {
+            setToken(storedToken);
+        }
+    }, []);
     const Suggestons: { id: number; ProfilePIc: string; UserName: string, title: string }[] = [
         {
             id: 1,
@@ -46,7 +55,7 @@ const page: React.FC = () => {
     return (
         <>
             <div className='md:block hidden'>
-                <Sidebar />
+                <Sidebar token={token} isNotification1={false} />
             </div>
             
             <div>

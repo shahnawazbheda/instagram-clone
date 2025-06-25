@@ -49,7 +49,7 @@ const ReelsComponents: React.FC = () => {
             try {
                 const token = localStorage.getItem('token');
                 if (token) {
-                    const response = await getOwnAllPosts(token);
+                    const response = await getOwnAllPosts();
                     const responseData = response.data;
                     if (responseData && responseData.data) {
                         const userPosts = responseData.data.map((post: any) => ({
@@ -66,8 +66,8 @@ const ReelsComponents: React.FC = () => {
                             likeCount: post.likeCount,
                             commentCount: post.commentCount,
                         }));
-                        const videoPosts = userPosts.filter(post =>
-                            post.files.some(file => isVideoFile(file.filePath))
+                        const videoPosts = userPosts.filter((post:any) =>
+                            post.files.some((file:any) => isVideoFile(file.filePath))
                         );
                         setPosts(videoPosts);
                         setLoading(false);
@@ -84,8 +84,7 @@ const ReelsComponents: React.FC = () => {
                 setLoading(false);
                 setError('Error fetching user data');
             }
-        };
-        fetchUserData();
+        };        fetchUserData();
     }, []);
 
     const isImageFile = (filePath: string) => {

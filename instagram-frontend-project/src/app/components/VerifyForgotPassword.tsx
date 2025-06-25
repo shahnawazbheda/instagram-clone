@@ -21,7 +21,7 @@ const VerifyForgotPassword: React.FC = () => {
         setLoading(true);
         
         try {
-            await verifyResetOtp({ email, otp, newPassword });
+            await verifyResetOtp({ email, otp: parseInt(otp), newpassword: newPassword });
             toast.success(` Password reset successfully!`);
 
             setTimeout(() => {
@@ -33,7 +33,7 @@ const VerifyForgotPassword: React.FC = () => {
         } finally {
             setLoading(false);
         }
-    }
+    };
 
     return (
         <>
@@ -102,6 +102,5 @@ const VerifyForgotPassword: React.FC = () => {
                 </a>
             </div>
         </>
-    )
-}
-export default VerifyForgotPassword;
+    )}
+    export default VerifyForgotPassword;

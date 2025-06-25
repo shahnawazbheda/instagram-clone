@@ -16,7 +16,7 @@ const Explore: React.FC = () => {
     }, []);
     return (
         <>
-            <Sidebar />
+<Sidebar token={localStorage.getItem('token') || ''} isNotification1={false} />
 
             <div className='sm:ml-80'>
                 {loading ? (

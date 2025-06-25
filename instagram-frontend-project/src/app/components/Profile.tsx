@@ -96,7 +96,8 @@ const Profile: React.FC = () => {
             try {
                 const token = localStorage.getItem('token');
                 if (token) {
-                    const response = await getUserData(token);
+
+                    const response:any = await getUserData();
                     const responseData = response.data;
 
                     if (responseData && responseData.data.userName && responseData.data.name && responseData.data.bio) {

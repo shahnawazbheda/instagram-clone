@@ -339,13 +339,12 @@ const Posts: React.FC = () => {
                                             </div>
                                         </div>
                                     )}
-                                    <div onDoubleClick={() => handleDoubleClick(post)} className="block w-full bg-white border border-gray-200 rounded-sm shadow">
-                                        {showDoubleClickLike[post] && (
+                                    <div onDoubleClick={() => handleDoubleClick(post.id)} className="block w-full bg-white border border-gray-200 rounded-sm shadow">
+                                        {showDoubleClickLike[post.id] && (
                                             <div className="heart-animation">
                                                 <svg aria-label="Like" viewBox="0 0 48 48" width="128"><title>Like</title><defs><linearGradient gradientTransform="rotate(35)" id="ig_heart_gradient"><stop offset="0%" stop-color="#FF7A00"></stop><stop offset="40%" stop-color="#FF0169"></stop><stop offset="100%" stop-color="#FF0169"></stop></linearGradient></defs><path d="M34.3 3.3C29.4 3.3 24 5.9 24 5.9S18.6 3.3 13.7 3.3C6.5 3.3 1 8.8 1 15.9c0 10.4 11.1 18.5 22.1 28.7l.9.9.9-.9C35.9 34.4 47 26.3 47 15.9c0-7.1-5.5-12.6-12.7-12.6z" fill="url(#ig_heart_gradient)"></path></svg>
                                             </div>
                                         )}
-
                                         {isVideoFile(post.files[0].filePath) ? (
                                             <video
                                                 loop
